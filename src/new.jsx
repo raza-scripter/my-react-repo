@@ -287,12 +287,97 @@ function App() {
             className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200"
           >
             Submit
+
+
           </button>
+
+          
         </div>
       </div>
     </div>
   );
 }
 
+export function MyForm() {
+  const [selectedFruit, setSelectedFruit] = useState('banana');
+
+  const handleChange = (event) => {
+    setSelectedFruit(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    alert(`Your favorite fruit is: ${selectedFruit}`);
+    event.preventDefault();
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <p>Select your favorite fruit:</p>
+      <label>
+        <input 
+          type="radio" 
+          name="fruit" 
+          value="apple" 
+          checked={selectedFruit === 'apple'} 
+          onChange={handleChange} 
+        /> Apple
+      </label>
+      <br />
+      <label>
+        <input 
+          type="radio" 
+          name="fruit" 
+          value="banana" 
+          checked={selectedFruit === 'banana'} 
+          onChange={handleChange} 
+        /> Banana
+      </label>
+      <br />
+      <label>
+        <input 
+          type="radio" 
+          name="fruit" 
+          value="orange" 
+          checked={selectedFruit === 'cherry'} 
+          onChange={handleChange} 
+        /> Cherry
+      </label>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+
+export function Gender() {
+  const [gender, setGender] = useState("");
+
+  const handleSubmit = () => {
+    console.log("Selected Gender:", gender); 
+  };
+
+  return (
+    <div>
+      <h2>Select Gender</h2>
+      <input
+        type="radio"
+        name="gender"
+        value="Male"
+        onChange={(e) => setGender(e.target.value)}
+      /> Male
+      <input
+        type="radio"
+        name="gender"
+        value="Female"
+        onChange={(e) => setGender(e.target.value)}
+      /> Female
+
+      <br />
+      <button onClick={handleSubmit}>Submit</button>
+    </div>
+  );
+}
+
 export default App;
- 
+
+
